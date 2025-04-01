@@ -1,9 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
-import "../config"
+import "../../config"
+import "../../io"
 
 Rectangle {
-    //Usage info
+    id: root
+    property string bat: Power.bat
+    property string temp: SystemSessionIO.temp
+
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight
     radius: 10
@@ -18,27 +22,16 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: ""
+                text: " " + root.temp + "°C"
                 font: Config.infoFont
                 color: Colors.accent1
             }
 
-            Text {
-                text: "444"
-                font: Config.infoFont
-                color: Colors.accent1
-            }
         }
 
         RowLayout {
             Text {
-                text: "󰁹"
-                font: Config.infoFont
-                color: Colors.accent3
-            }
-
-            Text {
-                text: "bat"
+                text: "󰁹 " + root.bat + "%"
                 font: Config.infoFont
                 color: Colors.accent3
             }

@@ -1,9 +1,10 @@
 import QtQuick
 import QtQuick.Layouts
-import "../config"
+import "../../config"
 
 Rectangle {
     //Usage info
+    Layout.minimumWidth: 50
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight
     radius: 10
@@ -15,46 +16,38 @@ Rectangle {
         id: sysInfo
         spacing: Config.bar.componentSpacing
         anchors.centerIn: parent
+        anchors.bottom: parent.bottom
 
         RowLayout {
             Text {
-                text: "󰃟"
+                text: ""
                 font: Config.infoFont
-                color: Colors.accent1
-            }
-
-            Text {
-                text: "bri"
-                font: Config.infoFont
-                color: Colors.accent1
+                color: Colors.foreground
             }
         }
 
         RowLayout {
+            spacing: Config.bar.workspaceSpacing
             Text {
-                text: ""
+                text: "1"
                 font: Config.infoFont
-                color: Colors.accent2
+                color: Colors.foreground
             }
 
             Text {
-                text: "vol"
+                text: "2"
                 font: Config.infoFont
-                color: Colors.accent2
+                color: Colors.foreground
             }
-        }
-
-        RowLayout {
             Text {
-                text: ""
+                text: "3"
                 font: Config.infoFont
-                color: Colors.accent3
+                color: Colors.foreground
             }
-
             Text {
-                text: "sen"
+                text: "4"
                 font: Config.infoFont
-                color: Colors.accent3
+                color: Colors.foreground
             }
         }
     }

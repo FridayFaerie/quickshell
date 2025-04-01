@@ -1,11 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
-import "../config"
-import "../io"
+import "../../config"
+import "../../io"
 
 Rectangle {
     id: root
     property string usedCPU: SystemSessionIO.usedCPU
+    property string usedRAM: SystemSessionIO.usedRAM
+    property string usedSTO: SystemSessionIO.usedSTO
 
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight
@@ -30,7 +32,7 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: " " + "RAM"
+                text: " " + root.usedRAM + "%"
                 font: Config.infoFont
                 color: Colors.accent2
             }
@@ -38,7 +40,7 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: "󰋊 " + "HDD"
+                text: "󰋊 " + root.usedSTO + "%"
                 font: Config.infoFont
                 color: Colors.accent3
             }
