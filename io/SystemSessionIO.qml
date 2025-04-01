@@ -8,7 +8,10 @@ Singleton {
     id: root
 
     property string workingDirectory: "/home/friday/.config/quickshell/"
+
+
     property int temp
+    property string brightness
 
     // A lot of things here are from Xanazf
 
@@ -65,17 +68,18 @@ Singleton {
             getMEMinfo.reload();
             // getGPUinfo.running = true;
             getDiskinfo.running = true;
-            getCPUinfo.running = true;
+            getBRIinfo.running = true;
         }
     }
     // 1s timer
     Timer {
-        interval: 1000 
+        interval: 1000
         running: true
         repeat: true
         triggeredOnStart: true
         onTriggered: {
             getTEMPinfo.running = true;
+            getCPUinfo.running = true;
         }
     }
 
@@ -157,6 +161,21 @@ Singleton {
         stdout: SplitParser {
             onRead: data => {
                 root.usedCPU = data;
+                console.log("hihihi")
+            }
+        }
+        onExited: {
+            running = false;
+        }
+    }
+    Process {
+        id: getBRIinfo
+        command: ["sh", "-c", "brightnessctl -m i | cut -d, -f4"]
+        running: true
+        stdout: SplitParser {
+            onRead: data => {
+                root.brightness = data;
+                console.log("hi")
             }
         }
         onExited: {
@@ -169,7 +188,7 @@ Singleton {
         running: true
         stdout: SplitParser {
             onRead: data => {
-                root.temp = data/1000;
+                root.temp = data / 1000;
             }
         }
         onExited: {

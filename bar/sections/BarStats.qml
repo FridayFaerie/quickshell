@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../config"
-import "../../io"
+import "root:/config"
+import "root:/io"
 
 Rectangle {
     id: root

@@ -1,8 +1,11 @@
 import QtQuick
 import QtQuick.Layouts
 import "../../config"
+import "../../io"
 
 Rectangle {
+  id: root
+  property string brightness: SystemSessionIO.brightness
     //Usage info
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight
@@ -24,7 +27,7 @@ Rectangle {
             }
 
             Text {
-                text: "bri"
+                text: root.brightness
                 font: Config.infoFont
                 color: Colors.accent1
             }
