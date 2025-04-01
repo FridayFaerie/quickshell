@@ -6,7 +6,7 @@ import "root:/io"
 Rectangle {
     id: root
     property string bat: Power.bat
-    property string temp: SystemSessionIO.temp
+    property string temp: External.temp
 
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight

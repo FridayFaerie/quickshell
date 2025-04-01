@@ -5,9 +5,9 @@ import "../../io"
 
 Rectangle {
     id: root
-    property string usedCPU: SystemSessionIO.usedCPU
-    property string usedRAM: SystemSessionIO.usedRAM
-    property string usedSTO: SystemSessionIO.usedSTO
+    property string usedCPU: External.usedCPU
+    property string usedRAM: External.usedRAM
+    property string usedSTO: External.usedSTO
 
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight

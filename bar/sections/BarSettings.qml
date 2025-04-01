@@ -1,11 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../config"
-import "../../io"
+import "root:/config"
+import "root:/io"
 
 Rectangle {
   id: root
-  property string brightness: SystemSessionIO.brightness
+  property string brightness: External.brightness
+  property int volume: Audio.sink.audio.volume * 100
+  property int sensitivity: Audio.source.audio.volume * 100
     //Usage info
     Layout.preferredWidth: sysInfo.width + 30
     height: Config.bar.sectionHeight
@@ -21,13 +23,7 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: "󰃟"
-                font: Config.infoFont
-                color: Colors.accent1
-            }
-
-            Text {
-                text: root.brightness
+                text: "󰃟 " + root.brightness
                 font: Config.infoFont
                 color: Colors.accent1
             }
@@ -35,13 +31,7 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: ""
-                font: Config.infoFont
-                color: Colors.accent2
-            }
-
-            Text {
-                text: "vol"
+                text: " " + root.volume + "%"
                 font: Config.infoFont
                 color: Colors.accent2
             }
@@ -49,13 +39,7 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: ""
-                font: Config.infoFont
-                color: Colors.accent3
-            }
-
-            Text {
-                text: "sen"
+                text: " " + root.sensitivity + "%"
                 font: Config.infoFont
                 color: Colors.accent3
             }

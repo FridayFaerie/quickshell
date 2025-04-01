@@ -9,7 +9,6 @@ Singleton {
 
     property string workingDirectory: "/home/friday/.config/quickshell/"
 
-
     property int temp
     property string brightness
 
@@ -79,6 +78,16 @@ Singleton {
         triggeredOnStart: true
         onTriggered: {
             getTEMPinfo.running = true;
+        }
+    }
+    // initialiser
+    Timer {
+        interval: 10
+        running: true
+        repeat: false
+        triggeredOnStart: true
+        onTriggered: {
+          // I have no clue what's going on, why CPUinfo needs to be triggered while the others don't..
             getCPUinfo.running = true;
         }
     }
@@ -161,7 +170,6 @@ Singleton {
         stdout: SplitParser {
             onRead: data => {
                 root.usedCPU = data;
-                console.log("hihihi")
             }
         }
         onExited: {
@@ -175,7 +183,6 @@ Singleton {
         stdout: SplitParser {
             onRead: data => {
                 root.brightness = data;
-                console.log("hi")
             }
         }
         onExited: {
