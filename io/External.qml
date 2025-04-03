@@ -11,7 +11,6 @@ Singleton {
     property string workingDirectory: "/home/friday/.config/quickshell/"
 
     property int temp
-    property string brightness
 
     // A lot of things here are from Xanazf
 
@@ -56,7 +55,6 @@ Singleton {
     // property real sdcTotal
     property real usedSTO
 
-
     // universal minute timer
     Timer {
         interval: 1000 * 60
@@ -68,7 +66,6 @@ Singleton {
             // getGPUinfo.running = true;
             getMEMinfo.reload();
             getDiskinfo.running = true;
-            getBRIinfo.running = true;
         }
     }
     // 1s timer
@@ -88,7 +85,7 @@ Singleton {
         repeat: false
         triggeredOnStart: true
         onTriggered: {
-          // I have no clue what's going on, why CPUinfo doesn't trigger for repeating timers, but others do
+            // I have no clue what's going on, why CPUinfo doesn't trigger for repeating timers, but others do
             getCPUinfo.running = true;
         }
     }
@@ -170,19 +167,6 @@ Singleton {
         stdout: SplitParser {
             onRead: data => {
                 root.usedCPU = data;
-            }
-        }
-        onExited: {
-            running = false;
-        }
-    }
-    Process {
-        id: getBRIinfo
-        command: ["sh", "-c", "brightnessctl -m i | cut -d, -f4"]
-        running: true
-        stdout: SplitParser {
-            onRead: data => {
-                root.brightness = data;
             }
         }
         onExited: {

@@ -1,3 +1,4 @@
+// w/ much help from AlephNought0/Faeryshell
 import QtQuick
 import QtQuick.Layouts
 import "root:/config"
@@ -6,7 +7,8 @@ import "root:/io"
 Rectangle {
     id: root
 
-    property string brightness: External.brightness
+    // property int modBrightness: Brightness.value
+    property string brightness: Brightness.brightness
     property int volume: Audio.sink.audio.volume * 100
     property int sensitivity: Audio.source.audio.volume * 100
 
@@ -30,6 +32,18 @@ Rectangle {
             text: "󰃟 " + root.brightness
             font: Config.infoFont
             color: Colors.accent1
+            MouseArea {
+                anchors.fill: parent
+
+                onWheel: event => {
+                    if (event.angleDelta.y > 0) {
+                        // might need user groups video for brightnessctl :(
+                        Brightness.value = 1;
+                    } else {
+                        Brightness.value = -1;
+                    }
+                }
+            }
         }
 
         Text {
