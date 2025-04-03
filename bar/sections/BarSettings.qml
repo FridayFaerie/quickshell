@@ -4,16 +4,15 @@ import "root:/config"
 import "root:/io"
 
 Rectangle {
-  id: root
-  property string brightness: External.brightness
-  property int volume: Audio.sink.audio.volume * 100
-  property int sensitivity: Audio.source.audio.volume * 100
-    //Usage info
-    Layout.preferredWidth: sysInfo.width + 30
+    id: root
+    property string brightness: External.brightness
+    property int volume: Audio.sink.audio.volume * 100
+    property int sensitivity: Audio.source.audio.volume * 100
+    Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding
     height: Config.bar.sectionHeight
     radius: 10
     color: Colors.background
-    border.width: 1.5
+    border.width: Config.bar.borderWidth
     border.color: Colors.outline
 
     RowLayout {

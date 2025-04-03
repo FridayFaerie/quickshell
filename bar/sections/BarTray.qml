@@ -1,31 +1,23 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../config"
+import "root:/config"
+import "root:/io"
 
 Rectangle { //Tray icons
     id: trayIcons
-    Layout.minimumWidth: 40
-    Layout.preferredWidth: trayRow.width + 20
+    Layout.preferredWidth: trayRow.width + Config.bar.componentPadding
     color: Colors.background
-    border.width: 1.5
+    border.width: Config.bar.borderWidth
     border.color: Colors.outline
 
     height: Config.bar.sectionHeight
     radius: 10
-    clip: true
-
-    property var selectedMenu: null
-    // property int allItems: SystemTray.items.values.length
 
     RowLayout {
         id: trayRow
-        height: 35
-        layoutDirection: Qt.RightToLeft
+        spacing: Config.bar.componentSpacing
+        anchors.centerIn: parent
 
-        anchors {
-            right: parent.right
-            rightMargin: 10
-            verticalCenter: parent.verticalCenter
-        }
+        SysTray {}
     }
 }

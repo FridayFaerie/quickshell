@@ -1,14 +1,14 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "../../config"
+import "root:/config"
 
 Rectangle {
-    Layout.preferredWidth: timeText.width + 30
+    Layout.preferredWidth: timeText.width + Config.bar.componentPadding
     height: Config.bar.sectionHeight
     radius: 10
     color: Colors.background
-    border.width: 1.5
+    border.width: Config.bar.borderWidth
     border.color: Colors.outline
 
     SystemClock {

@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../config"
-import "../../io"
+import "root:/config"
+import "root:/io"
 
 Rectangle {
     id: root
@@ -9,11 +9,11 @@ Rectangle {
     property string usedRAM: External.usedRAM
     property string usedSTO: External.usedSTO
 
-    Layout.preferredWidth: sysInfo.width + 30
+    Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding
     height: Config.bar.sectionHeight
     radius: 10
     color: Colors.background
-    border.width: 1.5
+    border.width: Config.bar.borderWidth
     border.color: Colors.outline
 
     RowLayout {

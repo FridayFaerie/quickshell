@@ -1,3 +1,4 @@
+// please let me know if I can improve this in any way... no clue what I'm doing.....
 pragma Singleton
 
 import QtQuick
@@ -40,20 +41,21 @@ Singleton {
     // property list<string> currGpuProcesses
     //
     // disk info
-    property list<string> nvme0n1Children
+    // property list<string> nvme0n1Children
     // property list<string> sdaChildren
     // property list<string> sdbChildren
     // property list<string> sdcChildren
     //
-    property real nvme0n1Used
+    // property real nvme0n1Used
     // property real sdaUsed
     // property real sdbUsed
     // property real sdcUsed
-    property real nvme0n1Total
+    // property real nvme0n1Total
     // property real sdaTotal
     // property real sdbTotal
     // property real sdcTotal
-    property real usedSTO: Math.round(100 * (nvme0n1Used) / nvme0n1Total)
+    property real usedSTO
+
 
     // universal minute timer
     Timer {
@@ -63,9 +65,8 @@ Singleton {
         triggeredOnStart: true
         onTriggered: {
             // getUptime.running = true;
-            getMEMinfo.path = "/proc/meminfo";
-            getMEMinfo.reload();
             // getGPUinfo.running = true;
+            getMEMinfo.reload();
             getDiskinfo.running = true;
             getBRIinfo.running = true;
         }
@@ -87,7 +88,7 @@ Singleton {
         repeat: false
         triggeredOnStart: true
         onTriggered: {
-          // I have no clue what's going on, why CPUinfo needs to be triggered while the others don't..
+          // I have no clue what's going on, why CPUinfo doesn't trigger for repeating timers, but others do
             getCPUinfo.running = true;
         }
     }
@@ -156,7 +157,6 @@ Singleton {
                 // if (root.freeSwap !== freegbSwap.toFixed(1)) {
                 //   root.freeSwap = freegbSwap.toFixed(1);
                 // }
-                getMEMinfo.path = "";
             } else {
                 getMEMinfo.reload();
             }
@@ -240,8 +240,8 @@ Singleton {
                 const blockdevices = parsed.blockdevices;
                 // let swap;
                 for (const device of blockdevices) {
-                    const childrenNames = device.children.map(item => item.name);
-                    root[`${device.name}Children`] = childrenNames;
+                    // const childrenNames = device.children.map(item => item.name);
+                    // root[`${device.name}Children`] = childrenNames;
 
                     let freePercent;
                     let freeValue;
@@ -253,14 +253,15 @@ Singleton {
                             continue;
                         }
                         usedPercent = Number(child["fsuse%"].slice(0, -1));
-                        freePercent = 100 - usedPercent;
-
-                        freeValue = Number(child["fsavail"].slice(0, -3));
-                        totalSize = (freeValue / (freePercent * 0.01)).toFixed(0);
-                        usedValue = totalSize - freeValue;
+                        // freePercent = 100 - usedPercent;
+                        //
+                        // freeValue = Number(child["fsavail"].slice(0, -3));
+                        // totalSize = (freeValue / (freePercent * 0.01)).toFixed(0);
+                        // usedValue = totalSize - freeValue;
                     }
-                    root[`${device.name}Used`] = usedValue;
-                    root[`${device.name}Total`] = totalSize;
+                    // root[`${device.name}Used`] = usedValue;
+                    // root[`${device.name}Total`] = totalSize;
+                    root.usedSTO = usedPercent;
                 }
             }
         }
