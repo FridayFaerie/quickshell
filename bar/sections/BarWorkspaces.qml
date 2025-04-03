@@ -16,7 +16,7 @@ Rectangle {
 
     RowLayout {
         id: sysInfo
-        spacing: Config.bar.componentSpacing
+        spacing: 5
         anchors.centerIn: parent
 
         Text {
