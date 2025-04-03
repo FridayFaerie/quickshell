@@ -29,7 +29,7 @@ RowLayout {
             implicitWidth: 25
             implicitHeight: Config.bar.sectionHeight
 
-            color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.foreground : "transparent"
+            color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.accent3 : "transparent"
 
             Text {
                 id: workspaceText
