@@ -24,7 +24,7 @@ Rectangle {
 
         RowLayout {
             Text {
-                text: " " + root.usedCPU +"%"
+                text: " " + root.usedCPU + "%"
                 font: Config.infoFont
                 color: Colors.accent1
             }
@@ -44,7 +44,13 @@ Rectangle {
                 font: Config.infoFont
                 color: Colors.accent3
             }
+        }
+    }
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            External.btop();
         }
     }
 }

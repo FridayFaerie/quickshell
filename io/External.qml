@@ -9,7 +9,10 @@ Singleton {
     id: root
 
     function drun() {
-      drun.running = true;
+        drun.running = true;
+    }
+    function btop() {
+        btop.running = true;
     }
 
     property string workingDirectory: "/home/friday/.config/quickshell/"
@@ -260,6 +263,14 @@ Singleton {
     Process {
         id: drun
         command: ["sh", "-c", "rofi -show drun -show-icons"]
+        running: false
+        onExited: {
+            running = false;
+        }
+    }
+    Process {
+        id: btop
+        command: ["sh", "-c", "kitty --start-as=fullscreen --title btop sh -c 'btop'"]
         running: false
         onExited: {
             running = false;

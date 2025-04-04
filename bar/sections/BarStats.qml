@@ -26,7 +26,6 @@ Rectangle {
                 font: Config.infoFont
                 color: Colors.accent1
             }
-
         }
 
         RowLayout {
@@ -35,6 +34,12 @@ Rectangle {
                 font: Config.infoFont
                 color: Colors.accent3
             }
+        }
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            External.btop();
         }
     }
 }
