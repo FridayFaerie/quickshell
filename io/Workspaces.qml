@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Hyprland
 
 import "root:config/"
+import "root:io/"
 
 RowLayout {
     id: root
@@ -26,19 +27,23 @@ RowLayout {
             id: workspace
             required property HyprlandWorkspace modelData
 
-            implicitWidth: 25
-            implicitHeight: Config.bar.sectionHeight
+            color: "transparent"
 
-            color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.accent3 : "transparent"
+            width: 25
+            height: Config.bar.sectionHeight - 6
 
-            Text {
+            border.color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.foreground : "transparent"
+            border.width: 2
+            radius: 7
+
+            TextObject {
                 id: workspaceText
                 anchors.centerIn: parent
-                // Layout.alignment: Qt.AlignVCenter ????
+                // Layout.alignment: Qt.AlignVCenter
+
 
                 text: modelData.id == -98 ? "S" : modelData.name
-                color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.background : Colors.foreground
-                font: Config.infoFont
+                color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.foreground : Colors.foreground
             }
 
             MouseArea {

@@ -6,10 +6,6 @@ import Quickshell
 Singleton {
   property QtObject bar
 
-  property font infoFont: Qt.font({
-    family: "JetBrainsMono NerdFont",
-    pixelSize: 18
-  })
 
   bar: QtObject {
     property int sectionHeight: 30

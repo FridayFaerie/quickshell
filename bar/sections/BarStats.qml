@@ -21,17 +21,24 @@ Rectangle {
         anchors.centerIn: parent
 
         RowLayout {
-            Text {
-                text: " " + root.temp + "°C"
-                font: Config.infoFont
+            TextObject {
+                text: ""
+                color: Colors.accent1
+            }
+            TextObject {
+                text: root.temp + "°C"
                 color: Colors.accent1
             }
         }
 
         RowLayout {
-            Text {
-                text: "󰁹 " + root.bat + "%"
-                font: Config.infoFont
+            spacing: Config.bar.subSectionSpacing
+            TextObject {
+                text: "󰁹"
+                color: Colors.accent3
+            }
+            TextObject {
+                text: root.bat + "%"
                 color: Colors.accent3
             }
         }

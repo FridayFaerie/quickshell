@@ -19,9 +19,9 @@ Rectangle {
         spacing: 5
         anchors.centerIn: parent
 
-        Text {
+
+        TextObject {
             text: ""
-            font: Config.infoFont
             color: Colors.foreground
             MouseArea {
               anchors.fill: parent

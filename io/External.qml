@@ -8,6 +8,7 @@ import Quickshell.Io
 Singleton {
     id: root
 
+    property string debugValue: "4"
     function drun() {
         drun.running = true;
     }
@@ -83,6 +84,7 @@ Singleton {
         triggeredOnStart: true
         onTriggered: {
             getTEMPinfo.running = true;
+            // printDebug.running = true;
         }
     }
     // initialiser
@@ -275,5 +277,14 @@ Singleton {
         onExited: {
             running = false;
         }
+    }
+    Process {
+        id: printDebug
+        command: ["sh", "-c", "echo 'Printing debug!'"]
+      stdout: SplitParser {
+        onRead: data => {
+          console.log(root.debugValue)
+        }
+      }
     }
 }

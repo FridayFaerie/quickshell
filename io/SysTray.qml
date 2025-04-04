@@ -42,8 +42,6 @@ RowLayout {
       id: toprect
       required property SystemTrayItem modelData
       color: "transparent"
-      // implicitWidth: 36
-      // implicitHeight: 36
       implicitWidth: trayIcon.width
       implicitHeight: trayIcon.height
       anchors.verticalCenter: parent.verticalCenter

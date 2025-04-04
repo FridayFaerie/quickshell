@@ -23,25 +23,34 @@ Rectangle {
         anchors.centerIn: parent
 
         RowLayout {
-            Text {
-                text: " " + root.usedCPU + "%"
-                font: Config.infoFont
+            TextObject {
+                text: ""
+                color: Colors.accent1
+            }
+            TextObject {
+                text: root.usedCPU + "%"
                 color: Colors.accent1
             }
         }
 
         RowLayout {
-            Text {
-                text: " " + root.usedRAM + "%"
-                font: Config.infoFont
+            TextObject {
+                text: ""
+                color: Colors.accent2
+            }
+            TextObject {
+                text: root.usedRAM + "%"
                 color: Colors.accent2
             }
         }
 
         RowLayout {
-            Text {
-                text: "󰋊 " + root.usedSTO + "%"
-                font: Config.infoFont
+            TextObject {
+                text: "󰋊"
+                color: Colors.accent3
+            }
+            TextObject {
+                text: root.usedSTO + "%"
                 color: Colors.accent3
             }
         }

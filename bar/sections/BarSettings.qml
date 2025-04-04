@@ -28,10 +28,15 @@ Rectangle {
         spacing: Config.bar.componentSpacing
         anchors.centerIn: parent
 
-        Text {
-            text: "󰃟 " + root.brightness
-            font: Config.infoFont
+        RowLayout {
+        TextObject {
+            text: "󰃟"
             color: Colors.accent1
+          }
+        TextObject {
+            text: root.brightness
+            color: Colors.accent1
+          }
             MouseArea {
                 anchors.fill: parent
 
@@ -46,10 +51,15 @@ Rectangle {
             }
         }
 
-        Text {
-            text: root.sinkIcon + root.volume + "%"
-            font: Config.infoFont
+        RowLayout {
+        TextObject {
+            text: root.sinkIcon
             color: Colors.accent2
+          }
+        TextObject {
+            text: root.volume + "%"
+            color: Colors.accent2
+          }
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons: Qt.LeftButton
@@ -67,10 +77,15 @@ Rectangle {
             }
         }
 
-        Text {
-            text: root.sourceIcon + root.sensitivity + "%"
-            font: Config.infoFont
+        RowLayout {
+        TextObject {
+            text: root.sourceIcon
             color: Colors.accent3
+          }
+        TextObject {
+            text: root.sensitivity + "%"
+            color: Colors.accent3
+          }
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons: Qt.LeftButton

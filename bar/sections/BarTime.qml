@@ -16,9 +16,8 @@ Rectangle {
         precision: SystemClock.Minutes
     }
 
-    Text {
+    TextObject {
         id: timeText
-        font: Config.infoFont
         color: Colors.foreground
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter

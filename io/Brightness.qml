@@ -39,11 +39,6 @@ Singleton {
         id: decBRI
         command: ["brightnessctl", "set", "1%-"]
         running: false
-        stdout: SplitParser {
-            onRead: data => {
-                console.log(data);
-            }
-        }
         onExited: {
             running = false;
         }
@@ -52,11 +47,6 @@ Singleton {
         id: incBRI
         command: ["brightnessctl", "set", "1%+"]
         running: false
-        stdout: SplitParser {
-            onRead: data => {
-                console.log(data);
-            }
-        }
         onExited: {
             running = false;
         }
