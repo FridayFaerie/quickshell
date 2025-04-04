@@ -1,5 +1,5 @@
 TODO:
-- [ ] Launcher on click
+- [X] Launcher on click
 - [X] Workspace Selection on click
 - [ ] Btop on click of any stat item
 - [X] change brightness/volume on scroll

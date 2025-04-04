@@ -23,6 +23,13 @@ Rectangle {
             text: ""
             font: Config.infoFont
             color: Colors.foreground
+            MouseArea {
+              anchors.fill: parent
+              acceptedButtons: QtLeftButton
+              onClicked: {
+                External.drun();
+              }
+            }
         }
 
         Workspaces {}

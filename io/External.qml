@@ -8,6 +8,10 @@ import Quickshell.Io
 Singleton {
     id: root
 
+    function drun() {
+      drun.running = true;
+    }
+
     property string workingDirectory: "/home/friday/.config/quickshell/"
 
     property int temp
@@ -249,6 +253,14 @@ Singleton {
                 }
             }
         }
+        onExited: {
+            running = false;
+        }
+    }
+    Process {
+        id: drun
+        command: ["sh", "-c", "rofi -show drun -show-icons"]
+        running: false
         onExited: {
             running = false;
         }
