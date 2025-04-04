@@ -41,26 +41,16 @@ RowLayout {
                 font: Config.infoFont
             }
 
-            // MouseArea {
-            //     cursorShape: Qt.PointingHandCursor
-            //     propagateComposedEvents: true
-            //     acceptedButtons: Qt.LeftButton | Qt.RightButton
-            //     anchors.fill: parent
-            //     onClicked: mouse => {
-            //         if (mouse.button == Qt.LeftButton) {
-            //             toprect.modelData.activate();
-            //         } else if (mouse.button == Qt.RightButton) {
-            //             if (!menuOpener.anchor.window) {
-            //                 menuOpener.anchor.window = toprect.QsWindow.window;
-            //             }
-            //             if (menuOpener.visible) {
-            //                 menuOpener.close();
-            //             } else {
-            //                 menuOpener.open();
-            //             }
-            //         }
-            //     }
-            // }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if (modelData.id == -98) {
+                        Hyprland.dispatch("togglespecialworkspace magic");
+                    } else {
+                        Hyprland.dispatch(`workspace ${modelData.id}`);
+                    }
+                }
+            }
         }
     }
 }
