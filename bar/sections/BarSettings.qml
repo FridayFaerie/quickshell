@@ -40,6 +40,9 @@ Rectangle {
               // but I don't know how to do the MouseArea things otherwise
                 anchors.fill: parent
 
+                onClicked: {
+                  External.lockscreen()
+                }
                 onWheel: event => {
                     if (event.angleDelta.y > 0) {
                         // NOTE: might need user groups video for brightnessctl :(

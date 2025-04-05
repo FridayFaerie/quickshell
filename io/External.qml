@@ -10,14 +10,11 @@ import "root:/bar/sections"
 Singleton {
     id: root
 
-    // property string debugValue: 
+    // property string debugValue:
 
-    function drun() {
-        drun.running = true;
-    }
-    function btop() {
-        btop.running = true;
-    }
+    function drun() { drun.running = true; }
+    function btop() { btop.running = true; }
+    function lockscreen() { lockscreen.running = true; }
 
     property string workingDirectory: "/home/friday/.config/quickshell/"
 
@@ -33,7 +30,6 @@ Singleton {
     property real totalMEM
     property real freeMEM
     property real usedMEM: Math.round(100 * (root.totalMEM - root.freeMEM) / root.totalMEM)
-
 
     property real idleSecCPU
     property real totalSecCPU
@@ -186,6 +182,14 @@ Singleton {
     Process {
         id: btop
         command: ["sh", "-c", "kitty --start-as=fullscreen --title btop sh -c 'btop'"]
+        running: false
+        onExited: {
+            running = false;
+        }
+    }
+    Process {
+        id: lockscreen
+        command: ["hyprlock"]
         running: false
         onExited: {
             running = false;

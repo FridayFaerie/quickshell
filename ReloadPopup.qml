@@ -26,7 +26,7 @@ Scope {
         }
     }
 
-    // Keep the popup in a loader because it isn't needed most of the timeand will take up
+    // Keep the popup in a loader because it isn't needed most of the time, and will take up
     // memory that could be used for something else.
     LazyLoader {
         id: popupLoader
@@ -41,7 +41,7 @@ Scope {
 
             margins {
                 top: 25
-                left: 25
+                left: 65
             }
 
             width: rect.width
@@ -78,7 +78,7 @@ Scope {
                     }
 
                     Text {
-                        text: root.failed ? "Reload failed." : "Reloaded completed!"
+                        text: root.failed ? "haha no" : "wahoo!"
                         color: "white"
                     }
 
@@ -105,7 +105,7 @@ Scope {
                         property: "width"
                         from: rect.width
                         to: 0
-                        duration: failed ? 10000 : 800
+                        duration: failed ? 6000 : 800
                         onFinished: popupLoader.active = false
 
                         // Pause the animation when the mouse is hovering over the popup,
