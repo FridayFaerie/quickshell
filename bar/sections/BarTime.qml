@@ -17,28 +17,31 @@ Rectangle {
         precision: SystemClock.Minutes
     }
 
-    TextObject {
-        id: timeText
-        property int offset: 0
-        property date displayDate: new Date(clock.date.getTime() + offset)
-        color: Colors.foreground
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        text: Qt.formatDateTime(displayDate, "hh:mm · dd MMM, ddd")
+    MouseArea {
+        anchors.centerIn: parent
+        implicitHeight: timeText.implicitHeight
+        implicitWidth: timeText.implicitWidth
 
-        MouseArea {
-            anchors.fill: parent
-            acceptedButtons: Qt.LeftButton
+        TextObject {
+            id: timeText
+            property int offset: 0
+            property date displayDate: new Date(clock.date.getTime() + offset)
+            color: Colors.foreground
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            text: Qt.formatDateTime(displayDate, "hh:mm · dd MMM, ddd")
+        }
 
-            onClicked: {
-                timeText.offset = 0;
-            }
-            onWheel: event => {
-                if (event.angleDelta.y > 0) {
-                    timeText.offset += 60000;
-                } else {
-                    timeText.offset -= 60000;
-                }
+        acceptedButtons: Qt.LeftButton
+
+        onClicked: {
+            timeText.offset = 0;
+        }
+        onWheel: event => {
+            if (event.angleDelta.y > 0) {
+                timeText.offset += 60000;
+            } else {
+                timeText.offset -= 60000;
             }
         }
     }

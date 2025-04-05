@@ -26,82 +26,85 @@ Rectangle {
         spacing: Config.bar.componentSpacing
         anchors.centerIn: parent
 
-        RowLayout {
-            TextObject {
-                text: "󰃟"
-                color: Colors.accent1
-            }
-            TextObject {
-                text: root.brightness
-                color: Colors.accent1
-            }
-            MouseArea {
-              // WARN: anchor that is managed by layout, undefined behavior
-              // but I don't know how to do the MouseArea things otherwise
-                anchors.fill: parent
-
-                onClicked: {
-                  External.lockscreen()
+        MouseArea {
+            RowLayout {
+                id: brightness
+                TextObject {
+                    text: "󰃟"
+                    color: Colors.accent1
                 }
-                onWheel: event => {
-                    if (event.angleDelta.y > 0) {
-                        // NOTE: might need user groups video for brightnessctl :(
-                        Brightness.value = 1;
-                    } else {
-                        Brightness.value = -1;
-                    }
+                TextObject {
+                    text: root.brightness
+                    color: Colors.accent1
                 }
             }
-        }
+            implicitWidth: brightness.implicitWidth
+            implicitHeight: brightness.implicitHeight
 
-        RowLayout {
-            TextObject {
-                text: root.sinkIcon
-                color: Colors.accent2
+            onClicked: {
+                External.lockscreen();
             }
-            TextObject {
-                text: root.volume + "%"
-                color: Colors.accent2
-            }
-            MouseArea {
-                anchors.fill: parent
-                acceptedButtons: Qt.LeftButton
-
-                onClicked: {
-                    Audio.sink.audio.muted = !Audio.sink.audio.muted;
-                }
-                onWheel: event => {
-                    if (event.angleDelta.y > 0) {
-                        Audio.sink.audio.volume += 0.01;
-                    } else {
-                        Audio.sink.audio.volume -= 0.01;
-                    }
+            onWheel: event => {
+                if (event.angleDelta.y > 0) {
+                    // NOTE: might need user groups video for brightnessctl :(
+                    Brightness.value = 1;
+                } else {
+                    Brightness.value = -1;
                 }
             }
         }
 
-        RowLayout {
-            TextObject {
-                text: root.sourceIcon
-                color: Colors.accent3
-            }
-            TextObject {
-                text: root.sensitivity + "%"
-                color: Colors.accent3
-            }
-            MouseArea {
-                anchors.fill: parent
-                acceptedButtons: Qt.LeftButton
-
-                onClicked: {
-                    Audio.source.audio.muted = !Audio.source.audio.muted;
+        MouseArea {
+            RowLayout {
+                TextObject {
+                    text: root.sinkIcon
+                    color: Colors.accent2
                 }
-                onWheel: event => {
-                    if (event.angleDelta.y > 0) {
-                        Audio.source.audio.volume += 0.01;
-                    } else {
-                        Audio.source.audio.volume -= 0.01;
-                    }
+                TextObject {
+                    text: root.volume + "%"
+                    color: Colors.accent2
+                }
+            }
+            implicitWidth: brightness.implicitWidth
+            implicitHeight: brightness.implicitHeight
+            acceptedButtons: Qt.LeftButton
+
+            onClicked: {
+                Audio.sink.audio.muted = !Audio.sink.audio.muted;
+            }
+            onWheel: event => {
+                if (event.angleDelta.y > 0) {
+                    Audio.sink.audio.volume += 0.01;
+                } else {
+                    Audio.sink.audio.volume -= 0.01;
+                }
+            }
+        }
+
+        MouseArea {
+            RowLayout {
+                TextObject {
+                    text: root.sourceIcon
+                    color: Colors.accent3
+                }
+                TextObject {
+                    text: root.sensitivity + "%"
+                    color: Colors.accent3
+                }
+            }
+
+            implicitWidth: brightness.implicitWidth
+            implicitHeight: brightness.implicitHeight
+            acceptedButtons: Qt.LeftButton
+
+            onClicked: {
+                Audio.source.audio.muted = !Audio.source.audio.muted;
+            }
+            onWheel: event => {
+                if (event.angleDelta.y > 0) {
+                    Audio.source.audio.volume += 0.01;
+                } else {
+                    Audio.source.audio.volume -= 0.01;
                 }
             }
         }
