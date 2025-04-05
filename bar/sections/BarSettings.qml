@@ -36,8 +36,9 @@ Rectangle {
                 color: Colors.accent1
             }
             MouseArea {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+              // WARN: anchor that is managed by layout, undefined behavior
+              // but I don't know how to do the MouseArea things otherwise
+                anchors.fill: parent
 
                 onWheel: event => {
                     if (event.angleDelta.y > 0) {
@@ -60,8 +61,7 @@ Rectangle {
                 color: Colors.accent2
             }
             MouseArea {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+                anchors.fill: parent
                 acceptedButtons: Qt.LeftButton
 
                 onClicked: {
@@ -87,8 +87,7 @@ Rectangle {
                 color: Colors.accent3
             }
             MouseArea {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+                anchors.fill: parent
                 acceptedButtons: Qt.LeftButton
 
                 onClicked: {

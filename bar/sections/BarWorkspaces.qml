@@ -16,7 +16,7 @@ Rectangle {
 
     RowLayout {
         id: sysInfo
-        spacing: 5
+        spacing: 10
         anchors.centerIn: parent
 
 
