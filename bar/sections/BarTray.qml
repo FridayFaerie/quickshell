@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import "root:/config"
 import "root:/io"
 
-Rectangle { //Tray icons
+Rectangle { 
     id: trayIcons
     Layout.preferredWidth: trayRow.width + Config.bar.componentPadding
     color: Colors.background

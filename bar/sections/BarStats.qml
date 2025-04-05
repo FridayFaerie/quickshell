@@ -32,7 +32,6 @@ Rectangle {
         }
 
         RowLayout {
-            spacing: Config.bar.subSectionSpacing
             TextObject {
                 text: "󰁹"
                 color: Colors.accent3

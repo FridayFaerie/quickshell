@@ -17,7 +17,7 @@ RowLayout {
         Rectangle {
             id: workspace
             required property HyprlandWorkspace modelData
-            property bool active: Hyprland.focusedMonitor.activeWorkspace.id == modelData.id
+            property bool active: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id
 
             color: "transparent"
 
@@ -31,7 +31,6 @@ RowLayout {
             TextObject {
                 id: workspaceText
                 anchors.centerIn: parent
-                // Layout.alignment: Qt.AlignVCenter
 
                 text: modelData.id == -98 ? "S" : modelData.name
                 color: active ? Colors.foreground : Colors.foreground

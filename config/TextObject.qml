@@ -3,7 +3,7 @@ import QtQuick
 Text {
     topPadding: 1
     font: Qt.font({
-    family: "MonaspiceXr Nerd Font Mono",
+    family: "JetBrainsMono Nerd Font Propo",
     pixelSize: 18
   })
 }

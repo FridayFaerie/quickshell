@@ -25,7 +25,7 @@ Rectangle {
             color: Colors.foreground
             MouseArea {
               anchors.fill: parent
-              acceptedButtons: QtLeftButton
+              acceptedButtons: Qt.LeftButton
               onClicked: {
                 External.drun();
               }

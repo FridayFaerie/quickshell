@@ -7,14 +7,12 @@ import "root:/io"
 Rectangle {
     id: root
 
-    // property int modBrightness: Brightness.value
     property string brightness: Brightness.brightness
-    property int volume: Audio.sink.audio.volume * 100
-    property int sensitivity: Audio.source.audio.volume * 100
+    property int volume: Audio.sink?.audio.volume * 100
+    property int sensitivity: Audio.source?.audio.volume * 100
 
-    // the icons have different width :(((((
-    property string sinkIcon: Audio.sink == null ? "?" : (Audio.sink.audio.muted ? "󰖁 " : "󰕾 ")
-    property string sourceIcon: Audio.source == null ? "?" : (Audio.source.audio.muted ? "󰍭 " : "󰍬 ")
+    property string sinkIcon: Audio.sink == null ? "?" : (Audio.sink.audio.muted ? "󰖁" : "󰕾")
+    property string sourceIcon: Audio.source == null ? "?" : (Audio.source.audio.muted ? "󰍭" : "󰍬")
 
     Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding
     height: Config.bar.sectionHeight
@@ -29,20 +27,21 @@ Rectangle {
         anchors.centerIn: parent
 
         RowLayout {
-        TextObject {
-            text: "󰃟"
-            color: Colors.accent1
-          }
-        TextObject {
-            text: root.brightness
-            color: Colors.accent1
-          }
+            TextObject {
+                text: "󰃟"
+                color: Colors.accent1
+            }
+            TextObject {
+                text: root.brightness
+                color: Colors.accent1
+            }
             MouseArea {
-                anchors.fill: parent
+                Layout.fillWidth: true
+                Layout.fillHeight: true
 
                 onWheel: event => {
                     if (event.angleDelta.y > 0) {
-                        // might need user groups video for brightnessctl :(
+                        // NOTE: might need user groups video for brightnessctl :(
                         Brightness.value = 1;
                     } else {
                         Brightness.value = -1;
@@ -52,16 +51,17 @@ Rectangle {
         }
 
         RowLayout {
-        TextObject {
-            text: root.sinkIcon
-            color: Colors.accent2
-          }
-        TextObject {
-            text: root.volume + "%"
-            color: Colors.accent2
-          }
+            TextObject {
+                text: root.sinkIcon
+                color: Colors.accent2
+            }
+            TextObject {
+                text: root.volume + "%"
+                color: Colors.accent2
+            }
             MouseArea {
-                anchors.fill: parent
+                Layout.fillWidth: true
+                Layout.fillHeight: true
                 acceptedButtons: Qt.LeftButton
 
                 onClicked: {
@@ -78,16 +78,17 @@ Rectangle {
         }
 
         RowLayout {
-        TextObject {
-            text: root.sourceIcon
-            color: Colors.accent3
-          }
-        TextObject {
-            text: root.sensitivity + "%"
-            color: Colors.accent3
-          }
+            TextObject {
+                text: root.sourceIcon
+                color: Colors.accent3
+            }
+            TextObject {
+                text: root.sensitivity + "%"
+                color: Colors.accent3
+            }
             MouseArea {
-                anchors.fill: parent
+                Layout.fillWidth: true
+                Layout.fillHeight: true
                 acceptedButtons: Qt.LeftButton
 
                 onClicked: {

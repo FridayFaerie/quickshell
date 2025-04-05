@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import "root:/config"
 
 Rectangle {
+
     Layout.preferredWidth: timeText.width + Config.bar.componentPadding
     height: Config.bar.sectionHeight
     radius: 10

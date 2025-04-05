@@ -5,8 +5,12 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
+import "root:/bar/sections"
+
 Singleton {
     id: root
+
+    // property string debugValue: 
 
     function drun() {
         drun.running = true;
@@ -30,7 +34,6 @@ Singleton {
     property real freeMEM
     property real usedMEM: Math.round(100 * (root.totalMEM - root.freeMEM) / root.totalMEM)
 
-    property string debugValue: idleSecCPU
 
     property real idleSecCPU
     property real totalSecCPU
@@ -48,7 +51,6 @@ Singleton {
         triggeredOnStart: true
         onTriggered: {
             // getUptime.running = true;
-            // getGPUinfo.running = true;
             getMEMinfo.reload();
             getDiskinfo.running = true;
         }
@@ -147,34 +149,8 @@ Singleton {
             root.temp = text / 1000;
         }
     }
-    // Process {
-    //   id: getGPUinfo
-    //   command: ["sh", "-c", "gpustat -P --no-color -c --no-header"]
-    //   running: true
-    //   stdout: SplitParser {
-    //     onRead: data => {
-    //       const dataSplit = data.split("|");
-    //       const name = dataSplit[0].slice(4);
-    //       const t_u_p = dataSplit[1].split(",").map(item => item.trim());
-    //       const temp = t_u_p[0];
-    //       const util = t_u_p[1].replace(" ", "");
-    //       const power = t_u_p[2].split("/").map(item => item.trim()).join("/").replace(" ", "");
-    //       const memory = dataSplit[2].split("/").map(item => item.trim()).join("/").replace(" ", "");
-    //       const processes = dataSplit[3]?.trim().split(" ");
-    //
-    //       root.gpuName = name;
-    //       root.gpuTemp = temp;
-    //       root.gpuUtilization = util;
-    //       root.gpuPower = power;
-    //       root.gpuMemory = memory;
-    //       root.currGpuProcesses = processes;
-    //     }
-    //   }
-    //   onExited: {
-    //     running = false;
-    //   }
-    // }
-    Process {
+
+    Process { // this is from Xanazf - but very stripped
         id: getDiskinfo
         command: ["sh", "-c", "lsblk -fnJA"]
         running: true
@@ -183,29 +159,14 @@ Singleton {
             onRead: data => {
                 const parsed = JSON.parse(data);
                 const blockdevices = parsed.blockdevices;
-                // let swap;
                 for (const device of blockdevices) {
-                    // const childrenNames = device.children.map(item => item.name);
-                    // root[`${device.name}Children`] = childrenNames;
-
-                    let freePercent;
-                    let freeValue;
                     let usedPercent;
-                    let usedValue;
-                    let totalSize;
                     for (const child of device.children) {
                         if (!child.fsavail) {
                             continue;
                         }
                         usedPercent = Number(child["fsuse%"].slice(0, -1));
-                        // freePercent = 100 - usedPercent;
-                        //
-                        // freeValue = Number(child["fsavail"].slice(0, -3));
-                        // totalSize = (freeValue / (freePercent * 0.01)).toFixed(0);
-                        // usedValue = totalSize - freeValue;
                     }
-                    // root[`${device.name}Used`] = usedValue;
-                    // root[`${device.name}Total`] = totalSize;
                     root.usedSTO = usedPercent;
                 }
             }
