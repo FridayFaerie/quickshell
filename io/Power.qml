@@ -8,7 +8,7 @@ Singleton {
   id: root
 
   property var battery: UPower.displayDevice
-  property int bat: Math.round(battery.percentage * 100)
+  property int bat: Math.floor(battery.percentage * 100)
 
 }
 

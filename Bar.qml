@@ -1,6 +1,6 @@
 import Quickshell
 import "./bar"
-import "./config"
+import "root:/config"
 
 Scope {
     PanelWindow {

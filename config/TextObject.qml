@@ -1,10 +1,9 @@
 import QtQuick
-import "root:/config"
 
 Text {
     topPadding: 1
     font: Qt.font({
-    family: "MonaspiceNe Nerd Font Mono",
+    family: "MonaspiceXr Nerd Font Mono",
     pixelSize: 18
   })
 }

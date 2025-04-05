@@ -1,5 +1,5 @@
 import QtQuick.Layouts
-import "../config"
+import "root:/config"
 import "./sections"
 
 RowLayout {

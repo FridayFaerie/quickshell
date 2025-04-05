@@ -6,7 +6,7 @@ import "root:/io"
 Rectangle {
     id: root
     property string usedCPU: External.usedCPU
-    property string usedRAM: External.usedRAM
+    property string usedMEM: External.usedMEM
     property string usedSTO: External.usedSTO
 
     Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding
@@ -39,7 +39,7 @@ Rectangle {
                 color: Colors.accent2
             }
             TextObject {
-                text: root.usedRAM + "%"
+                text: root.usedMEM + "%"
                 color: Colors.accent2
             }
         }

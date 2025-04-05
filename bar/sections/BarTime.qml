@@ -18,9 +18,27 @@ Rectangle {
 
     TextObject {
         id: timeText
+        property int offset: 0
+        property date displayDate: new Date(clock.date.getTime() + offset)
         color: Colors.foreground
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        text: Qt.formatDateTime(clock.date, "hh:mm · dd MMM, ddd")
+        text: Qt.formatDateTime(displayDate, "hh:mm · dd MMM, ddd")
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton
+
+            onClicked: {
+                timeText.offset = 0;
+            }
+            onWheel: event => {
+                if (event.angleDelta.y > 0) {
+                    timeText.offset += 60000;
+                } else {
+                    timeText.offset -= 60000;
+                }
+            }
+        }
     }
 }

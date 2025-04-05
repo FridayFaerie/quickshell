@@ -1,38 +1,30 @@
-// Much from pgattic
+// Much help from pgattic's config
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
 
 import "root:config/"
-import "root:io/"
 
 RowLayout {
     id: root
 
     spacing: 0
 
-    function getSortedWorkspaces() {
-        var arr = Hyprland.workspaces.values.slice();
-        arr.sort((a, b) => {
-            return a.id - b.id;
-        });
-        return arr;
-    }
-
     Repeater {
-        model: getSortedWorkspaces()
+        model: [...Hyprland.workspaces.values].sort((a, b) => { return a.id - b.id; })
 
         Rectangle {
             id: workspace
             required property HyprlandWorkspace modelData
+            property bool active: Hyprland.focusedMonitor.activeWorkspace.id == modelData.id
 
             color: "transparent"
 
-            width: 25
+            width: 24
             height: Config.bar.sectionHeight - 6
 
-            border.color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.foreground : "transparent"
+            border.color: active ? Colors.foreground : "transparent"
             border.width: 2
             radius: 7
 
@@ -41,9 +33,8 @@ RowLayout {
                 anchors.centerIn: parent
                 // Layout.alignment: Qt.AlignVCenter
 
-
                 text: modelData.id == -98 ? "S" : modelData.name
-                color: Hyprland.focusedMonitor?.activeWorkspace.id == modelData.id ? Colors.foreground : Colors.foreground
+                color: active ? Colors.foreground : Colors.foreground
             }
 
             MouseArea {
