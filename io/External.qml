@@ -181,7 +181,7 @@ Singleton {
     }
     Process {
         id: btop
-        command: ["sh", "-c", "kitty --start-as=fullscreen --title btop sh -c 'btop'"]
+        command: ["sh", "-c", "kitty --start-as=fullscreen sh -c 'btop'"]
         running: false
         onExited: {
             running = false;

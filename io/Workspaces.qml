@@ -21,7 +21,8 @@ RowLayout {
 
             color: "transparent"
 
-            width: 24
+            // width: 24
+            width: workspaceText.width + 14
             height: Config.bar.sectionHeight - 6
 
             border.color: active ? Colors.foreground : "transparent"
