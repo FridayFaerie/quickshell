@@ -4,20 +4,16 @@ import "root:/config"
 import "root:/io"
 
 Rectangle { 
-    id: trayIcons
-    Layout.preferredWidth: trayRow.width + Config.bar.componentPadding
     color: Colors.background
     border.width: Config.bar.borderWidth
     border.color: Colors.outline
-
     height: Config.bar.sectionHeight
     radius: 10
 
-    RowLayout {
-        id: trayRow
-        spacing: Config.bar.componentSpacing
-        anchors.centerIn: parent
+    Layout.preferredWidth: trayRow.width + Config.bar.componentPadding
 
-        SysTray {}
+    SysTray {
+      id: trayRow
+      anchors.centerIn: parent
     }
 }

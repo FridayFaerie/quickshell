@@ -6,4 +6,5 @@ RowLayout {
     spacing: Config.bar.sectionSpacing
     BarWorkspaces {}
     BarInfo {}
+    BarTray{}
 }

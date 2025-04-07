@@ -4,7 +4,7 @@ import "./sections"
 
 RowLayout {
     spacing: Config.bar.sectionSpacing
-    BarTray{}
-    BarStats{}
-    BarSettings{}
+    BarNotifs {}
+    BarStats {}
+    BarSettings {}
 }
