@@ -9,10 +9,14 @@ import "root:config/"
 RowLayout {
     id: root
 
+
     spacing: 0
 
     Repeater {
-        model: [...Hyprland.workspaces.values].sort((a, b) => { return a.id - b.id; })
+        id: workspaces
+        model: [...Hyprland.workspaces.values].sort((a, b) => {
+            return a.id - b.id;
+        })
 
         Rectangle {
             id: workspace

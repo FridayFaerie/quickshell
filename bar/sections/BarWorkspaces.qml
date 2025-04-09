@@ -4,6 +4,10 @@ import "root:/config"
 import "root:/io"
 
 Rectangle {
+  id: rect
+  onWidthChanged: {
+    console.log("yeah width changed")
+  }
 
     Layout.minimumWidth: 50
     Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding
@@ -13,6 +17,7 @@ Rectangle {
 
     height: Config.bar.sectionHeight
     radius: 10
+
 
     RowLayout {
         id: sysInfo
@@ -24,11 +29,12 @@ Rectangle {
             text: ""
             color: Colors.foreground
             MouseArea {
-              anchors.fill: parent
-              acceptedButtons: Qt.LeftButton
-              onClicked: {
-                External.drun();
-              }
+                anchors.fill: parent
+                acceptedButtons: Qt.LeftButton
+                onClicked: {
+                    External.drun();
+                    // console.log(rect.width)
+                }
             }
         }
 

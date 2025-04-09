@@ -14,6 +14,7 @@ Singleton {
 
     function drun() { drun.running = true; }
     function btop() { btop.running = true; }
+    function swaync() { swaync.running = true; }
     function lockscreen() { lockscreen.running = true; }
 
     property string workingDirectory: "/home/friday/.config/quickshell/"
@@ -183,9 +184,6 @@ Singleton {
         id: btop
         command: ["sh", "-c", "kitty --start-as=fullscreen sh -c 'btop'"]
         running: false
-        onExited: {
-            running = false;
-        }
     }
     Process {
         id: lockscreen
@@ -194,6 +192,11 @@ Singleton {
         onExited: {
             running = false;
         }
+    }
+    Process {
+        id: swaync
+        command: ["sh", "-c", "swaync-client -t"]
+        running: false
     }
     Process {
         id: printDebug

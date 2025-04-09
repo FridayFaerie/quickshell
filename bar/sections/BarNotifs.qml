@@ -13,6 +13,8 @@ Rectangle {
 
     Layout.preferredWidth: notifIcon.width + Config.bar.componentPadding
 
+    property bool active: false
+
 // 
 // 
 // 
@@ -20,12 +22,13 @@ Rectangle {
     TextObject {
         id: notifIcon
         anchors.centerIn: parent
-        text: ""
+        text: active?"":""
         color: Colors.accent2
         MouseArea {
             anchors.fill: parent
             onClicked: {
-              console.log(" TODO: THIS")
+              root.active = !root.active
+              External.swaync()
             }
         }
     }

@@ -9,5 +9,6 @@ TODO:
 - [X] change time on scroll
 - [ ] change battery/volume/brightness icons depending on value
 - [ ] prettify systray popup
+- [ ] add notification daemon properly
 - [ ] add animations (?)
 - [ ] other longer term stuff - calendar? 
