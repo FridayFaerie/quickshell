@@ -32,4 +32,8 @@ Rectangle {
             }
         }
     }
+
+    PopupNotifs {}
+
+
 }

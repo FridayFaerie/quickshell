@@ -1,5 +1,5 @@
 My quickshell config
-with influences/help from pgattic, AlephNought0, Xanazf, pterror
+with influences/help from pgattic, AlephNought0, Xanazf, pterror, allpurposemat, nydragon
 
 TODO:
 - [X] Launcher on click
@@ -9,6 +9,6 @@ TODO:
 - [X] change time on scroll
 - [ ] change battery/volume/brightness icons depending on value
 - [ ] prettify systray popup
-- [ ] add notification daemon properly
+- [ ] add notification daemon properly - rewrite everything and understand this time? 
 - [ ] add animations (?)
 - [ ] other longer term stuff - calendar? 
