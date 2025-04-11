@@ -12,3 +12,7 @@ TODO:
 - [ ] add notification daemon properly - rewrite everything and understand this time? 
 - [ ] add animations (?)
 - [ ] other longer term stuff - calendar? 
+
+
+note to self: I did
+`git update-index --assume-unchanged config/Colors.qml`
