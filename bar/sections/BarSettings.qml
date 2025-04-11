@@ -8,6 +8,7 @@ Rectangle {
     id: root
 
     property string brightness: Brightness.brightness
+    property int intendedBrightness: 30
     property int volume: Audio.sink?.audio.volume * 100
     property int sensitivity: Audio.source?.audio.volume * 100
 
@@ -47,9 +48,11 @@ Rectangle {
             onWheel: event => {
                 if (event.angleDelta.y > 0) {
                     // NOTE: might need user groups video for brightnessctl :(
-                    Brightness.value = 1;
+                    root.intendedBrightness += 1;
+                    Brightness.value = root.intendedBrightness;
                 } else {
-                    Brightness.value = -1;
+                    root.intendedBrightness -= 1;
+                    Brightness.value = root.intendedBrightness;
                 }
             }
         }
