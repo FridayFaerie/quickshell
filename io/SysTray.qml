@@ -1,3 +1,4 @@
+// much from Xanazf
 import QtQuick
 import QtQuick.Layouts
 import Quickshell

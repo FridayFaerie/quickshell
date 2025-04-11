@@ -26,6 +26,7 @@ Rectangle {
         color: Colors.accent2
         MouseArea {
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
             onClicked: {
               root.active = !root.active
               External.swaync()
