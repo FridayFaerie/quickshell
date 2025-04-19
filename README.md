@@ -15,4 +15,4 @@ TODO:
 
 
 note to self: I did
-`git update-index --assume-unchanged config/Colors.qml`
+`git update-index --skip-worktree config/Colors.qml`
