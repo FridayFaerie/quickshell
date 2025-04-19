@@ -34,7 +34,7 @@ Rectangle {
         }
     }
 
-    PopupNotifs {}
+    // PopupNotifs {}
 
 
 }
