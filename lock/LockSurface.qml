@@ -6,6 +6,12 @@ import Quickshell.Wayland
 Rectangle {
     id: root
     required property LockContext context
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            passwordBox.focus = true;
+        }
+    }
 
     property real fhdMultiplier: {
         let fhdMultiplierWidth = Math.round(Window.width * 10 / 1380);
@@ -54,13 +60,6 @@ Rectangle {
 
                 // The native font renderer tends to look nicer at large sizes.
                 renderType: Text.NativeRendering
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        passwordBox.focus = true;
-                    }
-                }
             }
 
             RowLayout {
@@ -80,7 +79,7 @@ Rectangle {
                         color: "transparent"
                     }
 
-                    focus: true
+                    focus: false
                     enabled: !root.context.unlockInProgress
                     echoMode: TextInput.Password
                     inputMethodHints: Qt.ImhSensitiveData

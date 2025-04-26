@@ -10,8 +10,10 @@ TODO:
 - [ ] change battery/volume/brightness icons depending on value
 - [ ] prettify systray popup - rewrite too?
 - [ ] add notification daemon properly - rewrite everything and understand this time? 
+- [ ] change battery/volume/brightness icons depending on value
 - [ ] add animations (?)
-- [ ] other longer term stuff - calendar? 
+- [ ] add launcher
+- [ ] calendar? 
 
 
 note to self: I did

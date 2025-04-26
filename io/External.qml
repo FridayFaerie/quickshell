@@ -187,7 +187,7 @@ Singleton {
     }
     Process {
         id: lockscreen
-        command: ["hyprlock"]
+        command: ["sh", "-c", "~/.config/scripts/lock.sh"]
         running: false
         onExited: {
             running = false;

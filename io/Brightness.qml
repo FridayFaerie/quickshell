@@ -7,19 +7,19 @@ Singleton {
     property string brightness
     property int value: 0
     function refresh() {
-      getBRIinfo.running = true;
+        getBRIinfo.running = true;
     }
 
     onValueChanged: () => {
-      if (value > 0) {
-        incBRI.running = true;
-        root.value = 0;
-      } else if (value < 0) {
-        decBRI.running = true;
-        root.value = 0;
-      } 
+        if (value > 0) {
+            incBRI.running = true;
+            root.value = 0;
+        } else if (value < 0) {
+            decBRI.running = true;
+            root.value = 0;
+        }
 
-      getBRIinfo.running = true;
+        getBRIinfo.running = true;
     }
 
     Process {
@@ -31,24 +31,13 @@ Singleton {
                 root.brightness = data;
             }
         }
-        onExited: {
-            running = false;
-        }
     }
     Process {
         id: decBRI
         command: ["brightnessctl", "set", "1%-"]
-        running: false
-        onExited: {
-            running = false;
-        }
     }
     Process {
         id: incBRI
         command: ["brightnessctl", "set", "1%+"]
-        running: false
-        onExited: {
-            running = false;
-        }
     }
 }

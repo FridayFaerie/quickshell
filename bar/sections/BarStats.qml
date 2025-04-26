@@ -1,11 +1,12 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell.Services.UPower
 import "root:/config"
 import "root:/io"
 
 Rectangle {
     id: root
-    property string bat: Power.bat
+    property int bat: Math.floor(UPower.displayDevice.percentage * 100)
     property string temp: External.temp
 
     Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding

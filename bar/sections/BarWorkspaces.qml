@@ -5,9 +5,6 @@ import "root:/io"
 
 Rectangle {
   id: rect
-  onWidthChanged: {
-    console.log("yeah width changed")
-  }
 
     Layout.minimumWidth: 50
     Layout.preferredWidth: sysInfo.width + Config.bar.componentPadding

@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import "root:/config"
 import "root:/io"
+import "./notifications/"
 
 Rectangle {
     id: root
@@ -34,7 +35,6 @@ Rectangle {
         }
     }
 
-    // PopupNotifs {}
-
+    // NotificationToast {}
 
 }
