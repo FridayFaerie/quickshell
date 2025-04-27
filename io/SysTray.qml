@@ -25,9 +25,7 @@ RowLayout {
                 anchors.fill: parent
                 IconImage {
                     id: trayIcon
-                    source: {
-                        return toprect.modelData.icon;
-                    }
+                    source: toprect.modelData.icon
                     height: Config.bar.sectionHeight - 6
                     width: Config.bar.sectionHeight - 6
                     anchors.centerIn: parent
