@@ -98,129 +98,78 @@ Item {
     }
 
     // TODO: factorise out the code to make images circular
-    Rectangle {
+    Badge {
         id: badge
+        imagesource: notif.image
+        size: 40
+
+
         anchors.horizontalCenter: box.right
         anchors.verticalCenter: box.top
         anchors.horizontalCenterOffset: -12
         anchors.verticalCenterOffset: 8
-
-        color: Colors.background
-        border.width: 2
-        border.color: Colors.outline
-        radius: 9999
-        visible: notif.image != ""
-
-        width: notifImage.width + 8
-        height: notifImage.height + 8
-
-        Image {
-            id: sourceImage
-            readonly property int size: notifImage.visible ? 40 : 0
-            visible: false
-            source: notif.image
-            fillMode: Image.PreserveAspectFit
-            cache: false
-            antialiasing: true
-
-            anchors.centerIn: parent
-            // TODO: do I need width? or sourceSize.width? try later
-            width: size
-            height: size
-            sourceSize.width: size
-            sourceSize.height: size
-        }
-
-        // https://forum.qt.io/topic/145956/rounded-image-in-qt6/6
-        MultiEffect {
-            id: notifImage
-            visible: notif.image != ""
-            source: sourceImage
-            width: sourceImage.width
-            height: sourceImage.height
-            anchors.fill: sourceImage
-            maskEnabled: true
-            maskSource: mask
-
-            maskThresholdMin: 0.5
-            maskSpreadAtMin: 1.0
-        }
-
-        Item {
-            id: mask
-            width: sourceImage.width
-            height: sourceImage.height
-            layer.enabled: true
-            layer.smooth: true
-            visible: false
-            Rectangle {
-                width: sourceImage.width
-                height: sourceImage.height
-                radius: width / 2
-                color: "black"
-            }
-        }
     }
 
-    Rectangle {
-        id: minibadge
-        anchors.horizontalCenter: box.right
-        anchors.verticalCenter: box.top
-        anchors.horizontalCenterOffset: 0
-        anchors.verticalCenterOffset: 32
 
-        color: Colors.background
-        border.width: 2
-        border.color: Colors.outline
-        radius: 9999
-        visible: notif.appIcon != ""
-
-        width: mininotifImage.width + 8
-        height: mininotifImage.height + 8
-
-        Image {
-            id: minisourceImage
-            readonly property int size: mininotifImage.visible ? 18 : 0
-            visible: false
-            source: notif.appIcon ? Quickshell.iconPath(notif.appIcon) : ""
-            fillMode: Image.PreserveAspectFit
-            cache: false
-            antialiasing: true
-
-            anchors.centerIn: parent
-            // TODO: do I need width? or sourceSize.width? try later
-            width: size
-            height: size
-            sourceSize.width: size
-            sourceSize.height: size
-        }
-
-        // https://forum.qt.io/topic/145956/rounded-image-in-qt6/6
-        MultiEffect {
-            id: mininotifImage
-            visible: notif.appIcon != ""
-            source: minisourceImage
-            width: minisourceImage.width
-            height: minisourceImage.height
-            anchors.fill: minisourceImage
-            maskEnabled: true
-            maskSource: mask
-        }
-
-        Item {
-            id: minimask
-            width: minisourceImage.width
-            height: minisourceImage.height
-            layer.enabled: true
-            visible: false
-            Rectangle {
-                width: minisourceImage.width
-                height: minisourceImage.height
-                radius: width / 2
-                color: "black"
-            }
-        }
-    }
+    // Rectangle {
+    //     id: minibadge
+    //     anchors.horizontalCenter: box.right
+    //     anchors.verticalCenter: box.top
+    //     anchors.horizontalCenterOffset: 0
+    //     anchors.verticalCenterOffset: 32
+    //
+    //     color: Colors.background
+    //     border.width: 2
+    //     border.color: Colors.outline
+    //     radius: 9999
+    //     visible: notif.appIcon != ""
+    //
+    //     width: mininotifImage.width + 8
+    //     height: mininotifImage.height + 8
+    //
+    //     Image {
+    //         id: minisourceImage
+    //         readonly property int size: mininotifImage.visible ? 18 : 0
+    //         visible: false
+    //         source: notif.appIcon ? Quickshell.iconPath(notif.appIcon) : ""
+    //         fillMode: Image.PreserveAspectFit
+    //         cache: false
+    //         antialiasing: true
+    //
+    //         anchors.centerIn: parent
+    //         // TODO: do I need width? or sourceSize.width? try later
+    //         width: size
+    //         height: size
+    //         sourceSize.width: size
+    //         sourceSize.height: size
+    //     }
+    //
+    //     // https://forum.qt.io/topic/145956/rounded-image-in-qt6/6
+    //     MultiEffect {
+    //         id: mininotifImage
+    //         visible: notif.appIcon != ""
+    //         source: minisourceImage
+    //         width: minisourceImage.width
+    //         height: minisourceImage.height
+    //         anchors.fill: minisourceImage
+    //         maskEnabled: true
+    //         maskSource: minimask
+    //     }
+    //
+    //     Item {
+    //         id: minimask
+    //         width: minisourceImage.width
+    //         height: minisourceImage.height
+    //         layer.enabled: true
+    //         visible: false
+    //         Rectangle {
+    //             width: minisourceImage.width
+    //             height: minisourceImage.height
+    //             radius: width / 2
+    //             color: "black"
+    //         }
+    //     }
+    // }
 
     // app icon, notif summary, close button, notif image, notif body, row of buttons
 }
