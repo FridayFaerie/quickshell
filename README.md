@@ -7,9 +7,13 @@ TODO:
 - [X] Btop on click of any stat item
 - [X] change brightness/volume on scroll
 - [X] change time on scroll
+- [X] add notification daemon properly
+- [ ] add show-all for notifications
+- [ ] add clear-all for notifications
+- [ ] add expand-on-hover for notifications
+- [ ] add group-by-sender for notifications
 - [ ] change battery/volume/brightness icons depending on value
 - [ ] prettify systray popup - rewrite too?
-- [ ] add notification daemon properly - rewrite everything and understand this time? 
 - [ ] change battery/volume/brightness icons depending on value
 - [ ] add animations (?)
 - [ ] add launcher

@@ -1,5 +1,5 @@
+#!/usr/bin/env -S quickshell -p
 import Quickshell
-import "../"
 
 ShellRoot {
   Toaster {}

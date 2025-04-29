@@ -1,10 +1,14 @@
-// pragma ComponentBehavior: Bound
+pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
 
 PanelWindow {
     id: root
+    signal testSignal(id: int)
+    onTestSignal: ()=>{
+      console.log("testing testing")
+    }
 
     WlrLayershell.namespace: "notifications"
     WlrLayershell.layer: WlrLayer.Overlay
@@ -12,9 +16,9 @@ PanelWindow {
     // exclusiveZone: 0
 
     visible: true
-    width: 400
-    // color: "transparent"
-    color: "#09ff00ff"
+    width: 413
+    color: "transparent"
+    // color: "#1fff00ff"
 
     anchors {
         top: true
@@ -49,13 +53,12 @@ PanelWindow {
                     //     const sound = n.urgency === NotificationUrgency.Critical ? Globals.conf.notifications.criticalSound : Globals.conf.notifications.normalSound;
                     //     Utils.Command.run(["sh", "-c", `play ${sound}`]);
                     // }
-                    // console.log(JSON.stringify(data.get(n)))
                 });
 
-                NotifServer.dismissed.connect(id => {
+                NotifServer.hide.connect(id => {
                     for (let i = 0; i < data.count; i++) {
                         const e = data.get(i);
-                        if (e.n.id === id) {
+                        if (e.notif.id === id) {
                             data.remove(i);
                             return;
                         }
@@ -65,7 +68,7 @@ PanelWindow {
         }
 
         delegate: Toast {
-            popup: true
+          popup: true
         }
 
         // displaced: Transition {

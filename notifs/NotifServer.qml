@@ -1,38 +1,34 @@
-//much from SirEthanator
 pragma Singleton
 
-import Quickshell
-import Quickshell.Services.Notifications
+import Quickshell;
+import Quickshell.Services.Notifications;
+import QtQuick;
 
 Singleton {
-    id: root
+  id: root
 
-    signal incoming(n: Notification)
-    signal dismissed(id: int)
+  property alias notifList: server.trackedNotifications;
 
-    NotificationServer {
-        id: server
+  signal incoming(n: Notification)
+  signal hide(id: int)
 
-        actionIconsSupported: true
-        actionsSupported: true
-        bodyHyperlinksSupported: true
-        bodyImagesSupported: true
-        bodyMarkupSupported: true
-        bodySupported: true
-        imageSupported: true
-        persistenceSupported: true
-        // extraHints: ["",""]
+  NotificationServer {
+    id: server
 
-        keepOnReload: false
+    actionIconsSupported: true;
+    actionsSupported: true;
+    imageSupported: true;
 
-        onNotification: n => {
-          console.log(JSON.stringify(n))
-            n.tracked = true;
-            root.incoming(n);
+    onNotification: n => {
+      n.tracked = true;
+      root.incoming(n);
 
-            n.closed.connect(() => {
-                root.dismissed(n.id);
-            });
-        }
+      n.closed.connect(() => {
+        root.hide(n.id)
+      })
+
     }
+  }
 }
+
+
