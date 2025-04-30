@@ -32,11 +32,11 @@ PanelWindow {
         width: list.width
     }
 
-    margins {
-        top: 20
-        right: 20
-        bottom: 20
-    }
+    // margins {
+    //     top: 20
+    //     right: 20
+    //     bottom: 20
+    // }
 
     ListView {
         id: list
