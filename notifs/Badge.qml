@@ -9,13 +9,14 @@ import "../config/"
 
         required property string imagesource
         required property int size
+        property int borderwidth: 2
 
 
         color: Colors.background
-        border.width: 2
+        border.width: borderwidth
         border.color: Colors.outline
         radius: 9999
-        visible: true
+        visible: imagesource != "" ? true : false
         width: size + border.width * 2
         height: size + border.width * 2
 

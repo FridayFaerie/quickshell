@@ -6,8 +6,8 @@ import Quickshell.Wayland
 PanelWindow {
     id: root
     signal testSignal(id: int)
-    onTestSignal: ()=>{
-      console.log("testing testing")
+    onTestSignal: () => {
+        console.log("testing testing");
     }
 
     WlrLayershell.namespace: "notifications"
@@ -38,16 +38,20 @@ PanelWindow {
         bottom: 20
     }
 
-    // ListView or ColumnLayout
     ListView {
         id: list
         anchors.fill: parent
         spacing: 10
+
+        focus: true
+
         model: ListModel {
             id: data
             Component.onCompleted: () => {
                 NotifServer.incoming.connect(n => {
-                  data.insert(0,{notif:n})
+                    data.insert(0, {
+                        notif: n
+                    });
                     // // TODO: sound
                     // if (Globals.conf.notifications.sounds) {
                     //     const sound = n.urgency === NotificationUrgency.Critical ? Globals.conf.notifications.criticalSound : Globals.conf.notifications.normalSound;
@@ -68,44 +72,48 @@ PanelWindow {
         }
 
         delegate: Toast {
-          popup: true
+            popup: true
         }
 
-        // displaced: Transition {
-        //   Anims.NumberAnim { property: "y"; duration: Globals.vars.animLen }
-        // }
-        // add: Transition {
-        //   ParallelAnimation {
-        //     Anims.NumberAnim {
-        //       property: "anchors.rightMargin";
-        //       from: -popups.width; to: 0;
-        //       duration: Globals.vars.animLen;
-        //       easing.type: Easing.OutExpo;
-        //     }
-        //     Anims.NumberAnim {
-        //       property: "anchors.leftMargin";
-        //       from: popups.width; to: 0;
-        //       duration: Globals.vars.animLen;
-        //       easing.type: Easing.OutExpo;
-        //     }
-        //   }
-        // }
-        // remove: Transition {
-        //   ParallelAnimation {
-        //     Anims.NumberAnim {
-        //       property: "anchors.rightMargin";
-        //       from: 0; to: -popups.width;
-        //       duration: Globals.vars.animLen;
-        //       easing.type: Easing.InExpo;
-        //     }
-        //     Anims.NumberAnim {
-        //       property: "anchors.leftMargin";
-        //       from: 0; to: popups.width;
-        //       duration: Globals.vars.animLen;
-        //       easing.type: Easing.InExpo;
-        //     }
-        //   }
-        // }
+
+
+        addDisplaced: Transition {
+          NumberAnimation {
+            properties: "y"
+            duration: 100
+          }
+        }
+        add: Transition {
+            NumberAnimation {
+                properties: "y"
+                from: -height
+                duration: 100
+            }
+        }
+        remove: Transition {
+          // TODO: what does propertyaction do?
+            // PropertyAction {
+            //     property: "ListView.delayRemove"
+            //     value: true
+            // }
+            ParallelAnimation {
+                NumberAnimation {
+                    property: "opacity"
+                    to: 0
+                    duration: 200
+                }
+                NumberAnimation {
+                    properties: "x"
+                    to: 100
+                    duration: 200
+                }
+            }
+            // PropertyAction {
+            //     property: "ListView.delayRemove"
+            //     value: true
+            // }
+        }
+
 
     }
 }

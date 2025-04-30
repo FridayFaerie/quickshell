@@ -40,7 +40,8 @@ Item {
             NotifServer.hide(root.notif.id);
         }, root.timeout);
     }
-    implicitHeight: box.implicitHeight - badge.anchors.horizontalCenterOffset + 5
+    implicitWidth: 400
+    implicitHeight: box.implicitHeight - badge.anchors.horizontalCenterOffset + badge.borderwidth
 
     Rectangle {
         id: box
@@ -49,7 +50,7 @@ Item {
         radius: 5
         border.width: 2
         border.color: Colors.outline
-        implicitWidth: 400
+        implicitWidth: parent.implicitWidth
         implicitHeight: c.implicitHeight
         anchors.bottom: parent.bottom
 
@@ -97,79 +98,29 @@ Item {
         }
     }
 
-    // TODO: factorise out the code to make images circular
+
     Badge {
         id: badge
-        imagesource: notif.image
+        // TODO: might be a better way to do this :/
+        imagesource: notif.image !="" ? notif.image : (notif.appIcon !=""? Quickshell.iconPath(notif.appIcon):"")
         size: 40
-
 
         anchors.horizontalCenter: box.right
         anchors.verticalCenter: box.top
         anchors.horizontalCenterOffset: -12
         anchors.verticalCenterOffset: 8
     }
+    Badge {
+        id: appbadge
+        imagesource: notif.appIcon != "" & notif.image != ""? Quickshell.iconPath(notif.appIcon) : ""
+        size: 18
 
+        anchors.horizontalCenter: box.right
+        anchors.verticalCenter: box.top
+        anchors.horizontalCenterOffset: 0
+        anchors.verticalCenterOffset: 28
+    }
 
-    // Rectangle {
-    //     id: minibadge
-    //     anchors.horizontalCenter: box.right
-    //     anchors.verticalCenter: box.top
-    //     anchors.horizontalCenterOffset: 0
-    //     anchors.verticalCenterOffset: 32
-    //
-    //     color: Colors.background
-    //     border.width: 2
-    //     border.color: Colors.outline
-    //     radius: 9999
-    //     visible: notif.appIcon != ""
-    //
-    //     width: mininotifImage.width + 8
-    //     height: mininotifImage.height + 8
-    //
-    //     Image {
-    //         id: minisourceImage
-    //         readonly property int size: mininotifImage.visible ? 18 : 0
-    //         visible: false
-    //         source: notif.appIcon ? Quickshell.iconPath(notif.appIcon) : ""
-    //         fillMode: Image.PreserveAspectFit
-    //         cache: false
-    //         antialiasing: true
-    //
-    //         anchors.centerIn: parent
-    //         // TODO: do I need width? or sourceSize.width? try later
-    //         width: size
-    //         height: size
-    //         sourceSize.width: size
-    //         sourceSize.height: size
-    //     }
-    //
-    //     // https://forum.qt.io/topic/145956/rounded-image-in-qt6/6
-    //     MultiEffect {
-    //         id: mininotifImage
-    //         visible: notif.appIcon != ""
-    //         source: minisourceImage
-    //         width: minisourceImage.width
-    //         height: minisourceImage.height
-    //         anchors.fill: minisourceImage
-    //         maskEnabled: true
-    //         maskSource: minimask
-    //     }
-    //
-    //     Item {
-    //         id: minimask
-    //         width: minisourceImage.width
-    //         height: minisourceImage.height
-    //         layer.enabled: true
-    //         visible: false
-    //         Rectangle {
-    //             width: minisourceImage.width
-    //             height: minisourceImage.height
-    //             radius: width / 2
-    //             color: "black"
-    //         }
-    //     }
-    // }
-
-    // app icon, notif summary, close button, notif image, notif body, row of buttons
+    // done: appicon, notifsummary, notifimage, notifbody, 
+    // not done: hide, dismiss, show-all, row of buttons in show-all?
 }
