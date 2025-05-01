@@ -40,8 +40,10 @@ Item {
             NotifServer.hide(root.notif.id);
         }, root.timeout);
     }
+
     implicitWidth: 400
     implicitHeight: box.implicitHeight - badge.anchors.horizontalCenterOffset + badge.borderwidth
+
 
     Rectangle {
         id: box
@@ -50,7 +52,7 @@ Item {
         radius: 5
         border.width: 2
         border.color: Colors.outline
-        implicitWidth: parent.implicitWidth
+        implicitWidth: parent.implicitWidth - badge.width / 2 - badge.anchors.horizontalCenterOffset
         implicitHeight: c.implicitHeight
         anchors.bottom: parent.bottom
 
@@ -98,11 +100,10 @@ Item {
         }
     }
 
-
     Badge {
         id: badge
         // TODO: might be a better way to do this :/
-        imagesource: notif.image !="" ? notif.image : (notif.appIcon !=""? Quickshell.iconPath(notif.appIcon):"")
+        imagesource: notif.image != "" ? notif.image : (notif.appIcon != "" ? Quickshell.iconPath(notif.appIcon) : "")
         size: 40
 
         anchors.horizontalCenter: box.right
@@ -112,7 +113,7 @@ Item {
     }
     Badge {
         id: appbadge
-        imagesource: notif.appIcon != "" & notif.image != ""? Quickshell.iconPath(notif.appIcon) : ""
+        imagesource: notif.appIcon != "" & notif.image != "" ? Quickshell.iconPath(notif.appIcon) : ""
         size: 18
 
         anchors.horizontalCenter: box.right
@@ -121,6 +122,6 @@ Item {
         anchors.verticalCenterOffset: 28
     }
 
-    // done: appicon, notifsummary, notifimage, notifbody, 
+    // done: appicon, notifsummary, notifimage, notifbody,
     // not done: hide, dismiss, show-all, row of buttons in show-all?
 }

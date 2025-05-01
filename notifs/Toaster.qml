@@ -16,7 +16,7 @@ PanelWindow {
     // exclusiveZone: 0
 
     visible: true
-    width: 413
+    width: 400
     color: "transparent"
     // color: "#1fff00ff"
 
@@ -29,14 +29,14 @@ PanelWindow {
     mask: Region {
         // intersection: Intersection.Combine
         height: list.contentHeight + list.y
-        width: list.width
+        width: root.width
     }
 
-    // margins {
-    //     top: 20
-    //     right: 20
-    //     bottom: 20
-    // }
+    margins {
+        top: 20
+        right: 20
+        bottom: 20
+    }
 
     ListView {
         id: list
@@ -72,6 +72,7 @@ PanelWindow {
         }
 
         delegate: Toast {
+          width: root.width
             popup: true
         }
 
