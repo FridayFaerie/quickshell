@@ -3,6 +3,8 @@ import QtQuick
 import QtQuick.Layouts
 import "root:/config"
 import "root:/io"
+// TODO: remove this import
+import "root:/rewall"
 
 Rectangle {
     id: root
@@ -42,7 +44,10 @@ Rectangle {
             implicitHeight: brightness.implicitHeight
 
             onClicked: {
-                External.lockscreen();
+                // External.lockscreen();
+                console.log(OldWall.isActive)
+                External.changewall();
+                OldWall.isActive = true;
             }
             onWheel: event => {
                 if (event.angleDelta.y > 0) {

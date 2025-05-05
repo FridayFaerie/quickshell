@@ -17,6 +17,8 @@ Singleton {
     function swaync() { swaync.running = true; }
     function lockscreen() { lockscreen.running = true; }
 
+    function changewall() { changewall.running = true; }
+
     property string workingDirectory: "/home/friday/.config/quickshell/"
 
     property int temp
@@ -196,6 +198,11 @@ Singleton {
     Process {
         id: swaync
         command: ["sh", "-c", "swaync-client -t"]
+        running: false
+    }
+    Process {
+        id: changewall
+        command: ["sh", "-c", "~/.config/scripts/switch_wallpaper.sh g2"]
         running: false
     }
     Process {
