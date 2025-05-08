@@ -70,7 +70,7 @@ Item {
                 Text {
                     visible: text != ""
                     text: notif.summary
-                    color: Colors.foreground
+                    color: Colors.accent2
                     elide: Text.ElideRight
                     Layout.maximumWidth: box.implicitWidth - 80
                     font {
