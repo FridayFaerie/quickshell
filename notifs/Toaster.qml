@@ -16,7 +16,7 @@ PanelWindow {
     // exclusiveZone: 0
 
     visible: true
-    width: 400
+    implicitWidth: 400
     color: "transparent"
     // color: "#1fff00ff"
 

@@ -39,9 +39,9 @@ Rectangle {
         }
         onWheel: event => {
             if (event.angleDelta.y > 0) {
-                timeText.offset += 60000;
+                timeText.offset += 300000;
             } else {
-                timeText.offset -= 60000;
+                timeText.offset -= 300000;
             }
         }
     }

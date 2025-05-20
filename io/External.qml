@@ -202,7 +202,8 @@ Singleton {
     }
     Process {
         id: changewall
-        command: ["sh", "-c", "~/.config/scripts/switch_wallpaper.sh g2"]
+        // command: ["sh", "-c", "~/.config/scripts/switch_wallpaper.sh g2"]
+        command: ["sh", "-c", "~/.config/scripts/lock.sh"]
         running: false
     }
     Process {
