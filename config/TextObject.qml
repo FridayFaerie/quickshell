@@ -2,11 +2,11 @@ import QtQuick
 import QtQuick.Layouts
 
 Text {
-    // topPadding: 0
-    Layout.topMargin: 1.5
+    Layout.topMargin: 3
     font: Qt.font({
-    family: "JetBrainsMono Nerd Font Propo",
-    pixelSize: 18
+    family: "Caslonia",
+    bold: true,
+    pixelSize: 30
   })
 }
 

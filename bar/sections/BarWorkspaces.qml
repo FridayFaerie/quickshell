@@ -22,8 +22,10 @@ Rectangle {
         anchors.centerIn: parent
 
 
-        TextObject {
-            text: ""
+        TextObjectIcons {
+            // text: ""
+            // text: "󰄚"
+            text: ""
             color: Colors.foreground
             MouseArea {
                 anchors.fill: parent

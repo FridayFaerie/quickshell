@@ -44,11 +44,11 @@ Item {
     implicitWidth: 400
     implicitHeight: box.implicitHeight - badge.anchors.horizontalCenterOffset + badge.borderwidth
 
-
     Rectangle {
         id: box
         // color: notif.urgency == NotificationUrgency.Critical ? "#30ff2030" : "#30c0ffff"
-        color: Colors.background
+        // color: Colors.background
+        color: "#ba1e1e1e"
         radius: 5
         border.width: 2
         border.color: Colors.outline
@@ -74,9 +74,9 @@ Item {
                     elide: Text.ElideRight
                     Layout.maximumWidth: box.implicitWidth - 80
                     font {
-                        family: "JetBrainsMono Nerd Font Propo"
-                        pixelSize: 18
-                        weight: 600
+                        family: "Caslonia"
+                        pixelSize: 25
+                        weight: 10000
                     }
                 }
             }
@@ -88,8 +88,8 @@ Item {
                 Layout.bottomMargin: 10
                 Layout.maximumWidth: box.implicitWidth - 20
                 font {
-                    family: "JetBrainsMono Nerd Font Propo"
-                    pixelSize: 12
+                    family: "Caslonia"
+                    pixelSize: 19
                 }
 
                 width: box.implicitWidth - 20
@@ -98,28 +98,6 @@ Item {
                 wrapMode: Text.Wrap
             }
         }
-    }
-
-    Badge {
-        id: badge
-        // TODO: might be a better way to do this :/
-        imagesource: notif.image != "" ? notif.image : (notif.appIcon != "" ? Quickshell.iconPath(notif.appIcon) : "")
-        size: 40
-
-        anchors.horizontalCenter: box.right
-        anchors.verticalCenter: box.top
-        anchors.horizontalCenterOffset: -12
-        anchors.verticalCenterOffset: 8
-    }
-    Badge {
-        id: appbadge
-        imagesource: notif.appIcon != "" & notif.image != "" ? Quickshell.iconPath(notif.appIcon) : ""
-        size: 18
-
-        anchors.horizontalCenter: box.right
-        anchors.verticalCenter: box.top
-        anchors.horizontalCenterOffset: 0
-        anchors.verticalCenterOffset: 28
     }
 
     // done: appicon, notifsummary, notifimage, notifbody,

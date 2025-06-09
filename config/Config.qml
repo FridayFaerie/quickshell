@@ -16,7 +16,7 @@ Singleton {
         property int workspaceSpacing: 10
         property int sideMargin: 5
         property int topMargin: 7
-        property real borderWidth: 1.5
+        property real borderWidth: 0
     }
 
     notifs: QtObject {

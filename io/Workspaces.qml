@@ -12,6 +12,8 @@ RowLayout {
 
     spacing: 0
 
+
+
     Repeater {
         id: workspaces
         model: [...Hyprland.workspaces.values].sort((a, b) => {
@@ -27,7 +29,7 @@ RowLayout {
 
             // width: 24
             width: workspaceText.width + 14
-            height: Config.bar.sectionHeight - 6
+            height: Config.bar.sectionHeight - 2
 
             border.color: active ? Colors.foreground : "transparent"
             border.width: 2

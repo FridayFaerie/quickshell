@@ -22,7 +22,7 @@ Rectangle {
         anchors.centerIn: parent
 
         RowLayout {
-            TextObject {
+            TextObjectIcons {
                 text: ""
                 color: Colors.accent1
             }
@@ -33,7 +33,7 @@ Rectangle {
         }
 
         RowLayout {
-            TextObject {
+            TextObjectIcons {
                 text: "󰁹"
                 color: Colors.accent3
             }

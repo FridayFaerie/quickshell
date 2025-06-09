@@ -3,6 +3,8 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 
+import "root:/shimeji"
+
 PanelWindow {
     id: root
     signal testSignal(id: int)
@@ -28,8 +30,8 @@ PanelWindow {
 
     mask: Region {
         // intersection: Intersection.Combine
-        height: list.contentHeight + list.y
-        width: root.width
+        // height: list.contentHeight + list.y
+        // width: root.width
     }
 
     margins {
@@ -71,9 +73,7 @@ PanelWindow {
             }
         }
 
-        delegate: Toast {
-          width: root.width
-            popup: true
+        delegate: Shimeji {
         }
 
 

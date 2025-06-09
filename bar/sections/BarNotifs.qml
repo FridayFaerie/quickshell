@@ -19,7 +19,7 @@ Rectangle {
 // 
 // 
 // 
-    TextObject {
+    TextObjectIcons {
         id: notifIcon
         anchors.centerIn: parent
         text: active?"":""
@@ -29,7 +29,7 @@ Rectangle {
             cursorShape: Qt.PointingHandCursor
             onClicked: {
               root.active = !root.active
-              External.swaync()
+              External.shutdown()
             }
         }
     }

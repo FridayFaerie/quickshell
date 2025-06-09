@@ -12,12 +12,21 @@ Singleton {
 
     // property string debugValue:
 
-    function drun() { drun.running = true; }
-    function btop() { btop.running = true; }
-    function swaync() { swaync.running = true; }
-    function lockscreen() { lockscreen.running = true; }
-
-    function changewall() { changewall.running = true; }
+    function drun() {
+        drun.running = true;
+    }
+    function btop() {
+        btop.running = true;
+    }
+    function shutdown() {
+        shutdown.running = true;
+    }
+    function swaync() {
+        swaync.running = true;
+    }
+    function lockscreen() {
+        lockscreen.running = true;
+    }
 
     property string workingDirectory: "/home/friday/.config/quickshell/"
 
@@ -52,8 +61,10 @@ Singleton {
             // getUptime.running = true;
             getMEMinfo.reload();
             getDiskinfo.running = true;
+            pid.running = true;
         }
     }
+
     // 1s timer
     Timer {
         interval: 1000
@@ -178,9 +189,6 @@ Singleton {
         id: drun
         command: ["sh", "-c", "rofi -show drun -show-icons"]
         running: false
-        onExited: {
-            running = false;
-        }
     }
     Process {
         id: btop
@@ -196,14 +204,13 @@ Singleton {
         }
     }
     Process {
-        id: swaync
-        command: ["sh", "-c", "swaync-client -t"]
+        id: shutdown
+        command: ["sh", "-c", "hyprctl dispatch exit"]
         running: false
     }
     Process {
-        id: changewall
-        // command: ["sh", "-c", "~/.config/scripts/switch_wallpaper.sh g2"]
-        command: ["sh", "-c", "~/.config/scripts/lock.sh"]
+        id: swaync
+        command: ["sh", "-c", "swaync-client -t"]
         running: false
     }
     Process {
@@ -212,6 +219,15 @@ Singleton {
         stdout: SplitParser {
             onRead: data => {
                 console.log(root.debugValue);
+            }
+        }
+    }
+    Process {
+        id: pid
+        command: ["sh", "-c", "echo ${PPID}"]
+        stdout: SplitParser {
+            onRead: data => {
+                console.log(data)
             }
         }
     }

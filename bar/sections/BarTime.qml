@@ -17,6 +17,8 @@ Rectangle {
         precision: SystemClock.Minutes
     }
 
+
+
     MouseArea {
         anchors.centerIn: parent
         implicitHeight: timeText.implicitHeight
@@ -25,7 +27,7 @@ Rectangle {
         TextObject {
             id: timeText
             property int offset: 0
-            property date displayDate: new Date(clock.date.getTime() + offset)
+            property date displayDate: new Date(clock.date.getTime() + offset )
             color: Colors.foreground
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
@@ -39,9 +41,9 @@ Rectangle {
         }
         onWheel: event => {
             if (event.angleDelta.y > 0) {
-                timeText.offset += 300000;
+                timeText.offset += 60000;
             } else {
-                timeText.offset -= 300000;
+                timeText.offset -= 60000;
             }
         }
     }
